@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const chants = getAllChants();
   
   const chantEntries: MetadataRoute.Sitemap = chants.map((chant) => ({
-    url: `https://chantpersib.com/chant/${chant.slug}`, // Update with real domain
+    url: `https://chantpersib.vercel.app/chant/${chant.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.7,
@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: 'https://chantpersib.com',
+      url: 'https://chantpersib.vercel.app',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,

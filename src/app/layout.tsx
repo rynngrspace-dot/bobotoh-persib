@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chant Persib – Lirik Chant & Anthem Bobotoh",
     description: "Arsip digital terlengkap lirik chant dan anthem Bobotoh Persib Bandung.",
-    url: "https://chantpersib.com", // Placeholder
+    url: "https://chantpersib.vercel.app",
     siteName: "Chant Persib",
     locale: "id_ID",
     type: "website",

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://chantpersib.com/sitemap.xml',
+    sitemap: 'https://chantpersib.vercel.app/sitemap.xml',
   }
 }
