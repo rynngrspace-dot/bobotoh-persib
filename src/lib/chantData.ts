@@ -135,6 +135,30 @@ export const chantDatabase: Record<string, Chant> = {
       "Persib till i die !!!",
     ],
   },
+  "dan-bandung": {
+    slug: "dan-bandung",
+    title: "Dan Bandung",
+    category: "ANTHEM",
+    author: "Pidi Baiq",
+    lyrics: [
+      "Dan Bandung, bagiku bukan cuma",
+      "Urusan wilayah belaka",
+      "Lebih jauh dari itu, melibatkan perasaan",
+      "Yang bersamaku ketika sunyi",
+      "",
+      "Dan Bandung, bagiku bukan cuma masalah geografis",
+      "Lebih jauh dari itu, melibatkan perasaan",
+      "Yang bersamaku ketika sunyi",
+      "",
+      "Mungkin saja ada tempat yang lainnya",
+      "Ketika ku berada di sana",
+      "Akan tetapi perasaanku sepenuhnya ada di Bandung",
+      "Yang bersamaku ketika itu",
+      "",
+      "Yang bersamaku ketika rindu",
+      "Yang bersamaku ketika sunyi",
+    ],
+  },
 };
 
 export const defaultChant: Chant = {

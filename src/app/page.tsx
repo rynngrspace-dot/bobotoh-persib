@@ -55,7 +55,7 @@ export default function HomePage() {
               <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#0046ad]/30 to-blue-500/10 blur-lg opacity-0 group-focus-within:opacity-100 transition-opacity duration-500" />
               <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center bg-slate-900 border border-slate-700 group-focus-within:border-[#0046ad] rounded-xl sm:rounded-2xl overflow-hidden transition-colors duration-300 shadow-xl">
                 <div className="flex items-center flex-1 px-4 py-3 sm:py-0">
-                  <Search className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                  <Search className="w-5 h-5 text-slate-500 shrink-0" />
                   <input
                     type="text"
                     placeholder="Cari judul chant atau lirik..."
