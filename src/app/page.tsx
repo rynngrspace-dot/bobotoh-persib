@@ -1,9 +1,26 @@
+"use client";
+
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Search, Users } from "lucide-react";
 import { getAllChants } from "@/lib/chantData";
 
 export default function HomePage() {
   const chants = getAllChants();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredChants = useMemo(() => {
+    if (!searchQuery.trim()) return chants;
+    
+    const query = searchQuery.toLowerCase();
+    return chants.filter((chant) => {
+      const titleMatch = chant.title.toLowerCase().includes(query);
+      const lyricsMatch = chant.lyrics.some((line) => 
+        line.toLowerCase().includes(query)
+      );
+      return titleMatch || lyricsMatch;
+    });
+  }, [searchQuery, chants]);
 
   return (
     <div className="flex flex-col bg-[#020817] min-h-screen">
@@ -58,14 +75,13 @@ export default function HomePage() {
                   <Search className="w-5 h-5 text-slate-500 shrink-0" />
                   <input
                     type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Cari judul chant atau lirik..."
                     className="flex-1 bg-transparent px-4 py-1 text-white placeholder-slate-500 text-sm sm:text-base outline-none tracking-wider font-bold"
                     aria-label="Cari chant"
                   />
                 </div>
-                <button className="m-1.5 sm:m-2 px-6 py-3 sm:py-2.5 bg-[#0046ad] hover:bg-blue-600 text-white text-xs sm:text-sm font-bold rounded-lg sm:rounded-xl transition-colors duration-200 uppercase tracking-widest active:scale-95">
-                  Cari
-                </button>
               </div>
             </div>
           </div>
@@ -80,32 +96,38 @@ export default function HomePage() {
             className="text-[10px] font-bold tracking-[0.5em] text-[#0046ad] uppercase"
             style={{ fontFamily: "var(--font-anton), Anton, sans-serif" }}
           >
-            List Lirik
+            {searchQuery ? `Hasil Pencarian (${filteredChants.length})` : "List Lirik"}
           </h2>
           <div className="flex-1 h-px bg-[#1e293b]" />
         </div>
 
         {/* Clean list */}
         <div className="flex flex-col border-t border-[#1e293b]">
-          {chants.map((chant, i) => (
-            <Link
-              key={chant.slug}
-              href={`/chant/${chant.slug}`}
-              className="group flex items-center justify-between py-4 border-b border-[#1e293b] hover:bg-[#0a1024] transition-all duration-300 px-4"
-            >
-              <div className="flex items-center gap-6 min-w-0">
-                <span className="flex-shrink-0 text-[10px] text-[#475569] font-bold tracking-widest w-6">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span
-                  className="text-lg sm:text-xl text-white group-hover:text-[#0046ad] transition-colors duration-200 truncate uppercase"
-                  style={{ fontFamily: "var(--font-anton), Anton, sans-serif" }}
-                >
-                  {chant.title}
-                </span>
-              </div>
-            </Link>
-          ))}
+          {filteredChants.length > 0 ? (
+            filteredChants.map((chant, i) => (
+              <Link
+                key={chant.slug}
+                href={`/chant/${chant.slug}`}
+                className="group flex items-center justify-between py-4 border-b border-[#1e293b] hover:bg-[#0a1024] transition-all duration-300 px-4"
+              >
+                <div className="flex items-center gap-6 min-w-0">
+                  <span className="flex-shrink-0 text-[10px] text-[#475569] font-bold tracking-widest w-6">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className="text-lg sm:text-xl text-white group-hover:text-[#0046ad] transition-colors duration-200 truncate uppercase"
+                    style={{ fontFamily: "var(--font-anton), Anton, sans-serif" }}
+                  >
+                    {chant.title}
+                  </span>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <div className="py-12 text-center">
+              <p className="text-slate-500 italic tracking-wider">Lirik tidak ditemukan...</p>
+            </div>
+          )}
         </div>
       </section>
     </div>

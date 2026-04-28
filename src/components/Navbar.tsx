@@ -17,7 +17,7 @@ export default function Navbar() {
               CHANT <span className="text-[#0046ad]">PERSIB</span>
             </span>
             <span className="text-[9px] tracking-[0.4em] text-[#64748b] uppercase mt-1">
-              Bobotoh Culture
+              1933 STILL ALIVE!
             </span>
           </Link>
 

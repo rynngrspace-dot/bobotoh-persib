@@ -64,6 +64,12 @@ export const metadata: Metadata = {
   verification: {
     google: "5SPQlTe3GyIPZsj4yOKLHqto11DE_fVND0hg6edpHpo",
   },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Chant Persib",
+  },
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
