@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Play, ChevronLeft } from "lucide-react";
 import { chantDatabase, defaultChant } from "@/lib/chantData";
+import ChantActions from "@/components/ChantActions";
 
 export async function generateMetadata({
   params,
@@ -122,6 +123,8 @@ export default async function ChantDetailPage({
             })}
           </div>
         </article>
+        
+        <ChantActions title={chant.title} lyrics={chant.lyrics} />
 
       </div>
     </div>
