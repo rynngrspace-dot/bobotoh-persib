@@ -102,33 +102,34 @@ export default function HomePage() {
         </div>
 
         {/* Clean list */}
-        <div className="flex flex-col border-t border-[#1e293b]">
+        <ul className="flex flex-col border-t border-[#1e293b]">
           {filteredChants.length > 0 ? (
             filteredChants.map((chant, i) => (
-              <Link
-                key={chant.slug}
-                href={`/chant/${chant.slug}`}
-                className="group flex items-center justify-between py-4 border-b border-[#1e293b] hover:bg-[#0a1024] transition-all duration-300 px-4"
-              >
-                <div className="flex items-center gap-6 min-w-0">
-                  <span className="flex-shrink-0 text-[10px] text-[#475569] font-bold tracking-widest w-6">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span
-                    className="text-lg sm:text-xl text-white group-hover:text-[#0046ad] transition-colors duration-200 truncate uppercase"
-                    style={{ fontFamily: "var(--font-anton), Anton, sans-serif" }}
-                  >
-                    {chant.title}
-                  </span>
-                </div>
-              </Link>
+              <li key={chant.slug}>
+                <Link
+                  href={`/chant/${chant.slug}`}
+                  className="group flex items-center justify-between py-4 border-b border-[#1e293b] hover:bg-[#0a1024] transition-all duration-300 px-4"
+                >
+                  <div className="flex items-center gap-6 min-w-0">
+                    <span className="flex-shrink-0 text-[10px] text-[#475569] font-bold tracking-widest w-6">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className="text-lg sm:text-xl text-white group-hover:text-[#0046ad] transition-colors duration-200 truncate uppercase"
+                      style={{ fontFamily: "var(--font-anton), Anton, sans-serif" }}
+                    >
+                      {chant.title}
+                    </span>
+                  </div>
+                </Link>
+              </li>
             ))
           ) : (
-            <div className="py-12 text-center">
+            <li className="py-12 text-center list-none">
               <p className="text-slate-500 italic tracking-wider">Lirik tidak ditemukan...</p>
-            </div>
+            </li>
           )}
-        </div>
+        </ul>
       </section>
     </div>
   );
