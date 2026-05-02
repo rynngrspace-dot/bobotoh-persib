@@ -104,7 +104,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${anton.variable} ${inter.variable} antialiased selection:bg-[#0046ad] selection:text-white`}
+        className={`${anton.variable} ${inter.variable} antialiased selection:bg-persib-blue selection:text-white`}
       >
         <div className="grain-overlay" />
         <Navbar />

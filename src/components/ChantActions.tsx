@@ -44,7 +44,7 @@ export default function ChantActions({ title, lyrics }: ChantActionsProps) {
   };
 
   return (
-    <div className="flex flex-wrap items-center gap-3 mt-12 py-8 border-t border-[#1e293b]">
+    <div className="flex flex-wrap items-center gap-3 mt-12 py-8 border-t border-slate-800">
       <button
         onClick={handleCopy}
         className="flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-full text-[10px] font-bold text-white uppercase tracking-widest transition-all active:scale-95"
@@ -64,7 +64,7 @@ export default function ChantActions({ title, lyrics }: ChantActionsProps) {
 
       <button
         onClick={handleGeneralShare}
-        className="flex items-center gap-2 px-4 py-2 bg-[#0046ad]/20 hover:bg-[#0046ad]/30 border border-[#0046ad]/40 rounded-full text-[10px] font-bold text-blue-400 uppercase tracking-widest transition-all active:scale-95"
+        className="flex items-center gap-2 px-4 py-2 bg-persib-blue/20 hover:bg-persib-blue/30 border border-persib-blue/40 rounded-full text-[10px] font-bold text-blue-400 uppercase tracking-widest transition-all active:scale-95"
       >
         <Share2 className="w-3.5 h-3.5" />
         Share Lirik

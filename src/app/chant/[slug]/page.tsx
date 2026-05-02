@@ -57,7 +57,7 @@ export default async function ChantDetailPage({
   };
 
   return (
-    <div className="min-h-screen bg-[#020817] flex flex-col pt-24 sm:pt-32 pb-32 px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-950 flex flex-col pt-24 sm:pt-32 pb-32 px-6 relative overflow-hidden">
       {/* Structured Data for SEO */}
       <script
         type="application/ld+json"
@@ -86,7 +86,7 @@ export default async function ChantDetailPage({
         {/* Back Button - User Friendly for Mobile */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs font-bold text-blue-500 uppercase tracking-[0.3em] mb-12 py-2 hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-bold text-blue-500 uppercase tracking-widest mb-12 py-2 hover:text-white transition-colors"
         >
           <ChevronLeft className="w-4 h-4" /> Kembali
         </Link>
@@ -100,16 +100,16 @@ export default async function ChantDetailPage({
             {chant.title}
           </h1>
           {chant.author && (
-            <p className="text-[10px] font-bold text-blue-500/80 uppercase tracking-[0.4em] mb-6">
+            <p className="text-[10px] font-bold text-persib-blue/80 uppercase tracking-widest mb-6">
               By {chant.author}
             </p>
           )}
-          <div className="w-12 h-1 bg-[#0046ad]" />
+          <div className="w-12 h-1 bg-persib-blue" />
         </div>
 
         {/* Lyrics Section */}
         <article className="relative">
-          <div className="absolute left-0 top-0 w-[1px] h-full bg-[#1e293b]" />
+          <div className="absolute left-0 top-0 w-px h-full bg-slate-800" />
           <div className="pl-8 space-y-4">
             {chant.lyrics.map((line, i) => {
               if (line === "") return <div key={i} className="h-6" />;
@@ -117,7 +117,7 @@ export default async function ChantDetailPage({
                 return (
                   <p
                     key={i}
-                    className="text-[#0046ad] text-xs font-bold uppercase tracking-[0.4em] pt-2"
+                    className="text-persib-blue text-xs font-bold uppercase tracking-widest pt-2"
                     style={{ fontFamily: "var(--font-anton), Anton, sans-serif" }}
                   >
                     {line.replace("Reff:", "")}
