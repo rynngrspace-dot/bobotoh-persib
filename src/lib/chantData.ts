@@ -159,6 +159,30 @@ export const chantDatabase: Record<string, Chant> = {
       "Yang bersamaku ketika sunyi",
     ],
   },
+  "persib-win-away": {
+    slug: "persib-win-away",
+    title: "Persib Win Away",
+    category: "MATCHDAY",
+    author: "Bobotoh",
+    lyrics: [
+      "Jingle Bells, Jingle Bells",
+      "Jingle all the way",
+      "Oh what fun it is to see",
+      "Persib win away.",
+    ],
+  },
+  "chant-for-federico-barba": {
+    slug: "chant-for-federico-barba",
+    title: "Chant for Federico Barba",
+    category: "PLAYER",
+    author: "Bobotoh",
+    lyrics: [
+      "lalalala la, lalalala la",
+      "lalalala lalala lalalala",
+      "federico barba, from italia",
+      "defender persib bandung",
+    ],
+  },
 };
 
 export const defaultChant: Chant = {

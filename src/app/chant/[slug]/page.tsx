@@ -12,23 +12,35 @@ export async function generateMetadata({
   const { slug } = await params;
   const chant = chantDatabase[slug] ?? defaultChant;
   
-  const pageTitle = `Lirik Chant ${chant.title}`;
-  const pageDesc = `Baca lirik lengkap chant ${chant.title} Persib Bandung. Suarakan kebanggaanmu bersama Bobotoh di stadion!`;
+  const pageTitle = `Lirik Chant ${chant.title} Persib Bandung`;
+  const pageDesc = `Baca lirik lengkap chant ${chant.title} Persib Bandung. Suarakan kebanggaanmu bersama ribuan Bobotoh di stadion. Arsip digital chant Persib terlengkap!`;
 
   return {
-    title: chant.title,
+    title: pageTitle,
     description: pageDesc,
+    alternates: {
+      canonical: `https://chantpersib.vercel.app/chant/${slug}`,
+    },
     openGraph: {
       title: pageTitle,
       description: pageDesc,
+      url: `https://chantpersib.vercel.app/chant/${slug}`,
       type: "article",
-      publishedTime: "2024-01-01T00:00:00.000Z", // Placeholder
-      authors: ["Bobotoh Culture"],
+      siteName: "Chant Persib",
+      images: [
+        {
+          url: "/favicon.png",
+          width: 512,
+          height: 512,
+          alt: `Lirik Chant ${chant.title}`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: pageTitle,
       description: pageDesc,
+      images: ["/favicon.png"],
     },
   };
 }
