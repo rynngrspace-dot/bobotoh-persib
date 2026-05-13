@@ -104,7 +104,7 @@ export default async function ChantDetailPage({
               By {chant.author}
             </p>
           )}
-          <div className="w-12 h-1 bg-persib-blue" />
+          <div className="w-12 h-px bg-persib-blue" />
         </div>
 
         {/* Lyrics Section */}

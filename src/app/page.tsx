@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { Search, Users } from "lucide-react";
+import { MessageCircle, MoveRight, Search, Users } from "lucide-react";
 import { getAllChants } from "@/lib/chantData";
 
 export default function HomePage() {
@@ -48,31 +48,50 @@ export default function HomePage() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-persib-blue/50 bg-persib-blue/10 text-blue-400 text-[10px] font-semibold uppercase tracking-widest mb-6">
             <Users className="w-3.5 h-3.5" />
-            Dari Bobotoh, Untuk Persib
+            From Bobotoh, For Persib
           </div>
 
           {/* Main Heading */}
           <h1
-            className="text-4xl sm:text-7xl lg:text-9xl text-white leading-[1.1] sm:leading-none tracking-wider mb-6 flicker"
+            className="text-[50px] sm:text-7xl lg:text-9xl text-white leading-[1.1] sm:leading-none tracking-wider mb-6 flicker"
             style={{ fontFamily: "var(--font-anton), Anton, sans-serif" }}
           >
-            SUARAKAN{" "}
-            <span className="block text-persib-blue mt-2 flicker">KEBANGGAAN!</span>
+            PERSIB{" "}
+            <span className="block text-persib-blue mt-2 flicker">SANG PENAKLUK!</span>
           </h1>
 
+          <div className="flex items-center justify-center gap-2 mb-8 fade-in-up [animation-delay:200ms]">
+            <span className="text-gold text-xl tracking-widest leading-none">★★★★</span>
+            <div className="flex items-center gap-2 text-slate-600 opacity-50">
+              <MoveRight className="w-4 h-4" />
+              <span className="text-xl leading-none">★</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest leading-none">soon!</span>
+            </div>
+          </div>
+
           <p className="mt-8 text-sm sm:text-lg text-slate-400 max-w-xl mx-auto leading-relaxed fade-in-up [animation-delay:400ms]">
-            Lebih dari sekadar dukungan, ini adalah nafas dan harga diri. <br className="hidden sm:block" />
+            Lebih dari sekadar dukungan, ini adalah warisan dan harga diri. <br className="hidden sm:block" />
             Abadikan setiap janji setia untuk kejayaan Sang Maung Bandung. <br />
             <span className="text-persib-blue font-bold">PERSIB TILL I DIE!</span>
           </p>
 
+          <div className="mt-10 flex justify-center fade-in-up [animation-delay:600ms]">
+            <Link 
+              href="/suara-bobotoh"
+              className="group relative flex items-center gap-3 px-8 py-4 bg-persib-blue hover:bg-blue-600 text-white rounded-2xl transition-all duration-300 shadow-2xl shadow-persib-blue/20 hover:scale-105 active:scale-95"
+            >
+              <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              <span className="text-[9px] md:text-xs font-bold uppercase tracking-widest">Berikan Harapan & Doa untuk Persib</span>
+            </Link>
+          </div>
+
           {/* Search Bar - Mobile Optimized */}
-          <div className="mt-12 max-w-2xl mx-auto">
+          <div className="mt-8 sm:mt-12 max-w-2xl mx-auto">
             <div className="relative group">
               <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-linear-to-r from-persib-blue/30 to-blue-500/10 blur-lg opacity-0 group-focus-within:opacity-100 transition-opacity duration-500" />
               <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center bg-slate-900 border border-slate-700 group-focus-within:border-persib-blue rounded-xl sm:rounded-2xl overflow-hidden transition-colors duration-300 shadow-xl">
-                <div className="flex items-center flex-1 px-4 py-3 sm:py-0">
-                  <Search className="w-5 h-5 text-slate-500 shrink-0" />
+                <div className="flex items-center flex-1 px-4 py-2 sm:py-3">
+                  <Search className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500 shrink-0" />
                   <input
                     type="text"
                     value={searchQuery}
