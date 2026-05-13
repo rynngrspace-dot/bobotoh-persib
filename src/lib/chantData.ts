@@ -244,7 +244,7 @@ export const chantDatabase: Record<string, Chant> = {
     author: "Bobotoh",
     lyrics: [
       "kudatang kembali",
-      "dengan kebangaan",
+      "dengan kebanggaan",
       "jangan pernah hentikan kami",
       "persib takan sendiri",
       "",
