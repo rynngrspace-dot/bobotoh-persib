@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Play, ChevronLeft } from "lucide-react";
 import { chantDatabase, defaultChant } from "@/lib/chantData";
 import ChantActions from "@/components/ChantActions";
+import ChantViewCounter from "@/components/ChantViewCounter";
 
 export async function generateMetadata({
   params,
@@ -99,11 +100,15 @@ export default async function ChantDetailPage({
           >
             {chant.title}
           </h1>
-          {chant.author && (
-            <p className="text-[10px] font-bold text-persib-blue/80 uppercase tracking-widest mb-6">
-              By {chant.author}
-            </p>
-          )}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6">
+            {chant.author && (
+              <span className="text-[10px] font-bold text-persib-blue/80 uppercase tracking-widest">
+                By {chant.author}
+              </span>
+            )}
+            {chant.author && <span className="text-slate-800 text-xs hidden sm:inline">|</span>}
+            <ChantViewCounter slug={slug} />
+          </div>
           <div className="w-12 h-px bg-persib-blue" />
         </div>
 

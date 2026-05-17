@@ -1,26 +1,59 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
-import { MessageCircle, MoveRight, Search, Users } from "lucide-react";
+import { MessageCircle, MoveRight, Search, Users, Eye } from "lucide-react";
 import { getAllChants } from "@/lib/chantData";
+import { supabase } from "@/lib/supabase";
 
 export default function HomePage() {
   const chants = getAllChants();
   const [searchQuery, setSearchQuery] = useState("");
+  const [viewsMap, setViewsMap] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    const fetchViews = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("chant_views")
+          .select("slug, views");
+        
+        if (error) throw error;
+        if (data) {
+          const map: Record<string, number> = {};
+          data.forEach((row) => {
+            map[row.slug] = Number(row.views);
+          });
+          setViewsMap(map);
+        }
+      } catch (err) {
+        console.warn("Failed to fetch views from Supabase:", err);
+      }
+    };
+
+    fetchViews();
+  }, []);
+
+  const sortedChants = useMemo(() => {
+    return [...chants].sort((a, b) => {
+      const viewsA = viewsMap[a.slug] || 0;
+      const viewsB = viewsMap[b.slug] || 0;
+      return viewsB - viewsA; // Descending
+    });
+  }, [chants, viewsMap]);
 
   const filteredChants = useMemo(() => {
-    if (!searchQuery.trim()) return chants;
+    if (!searchQuery.trim()) return sortedChants;
     
     const query = searchQuery.toLowerCase();
-    return chants.filter((chant) => {
+    return sortedChants.filter((chant) => {
       const titleMatch = chant.title.toLowerCase().includes(query);
       const lyricsMatch = chant.lyrics.some((line) => 
         line.toLowerCase().includes(query)
       );
       return titleMatch || lyricsMatch;
     });
-  }, [searchQuery, chants]);
+  }, [searchQuery, sortedChants]);
 
   return (
     <div className="flex flex-col bg-slate-950 min-h-screen">
@@ -61,7 +94,7 @@ export default function HomePage() {
           </h1>
 
           <div className="flex items-center justify-center gap-2 mb-8 fade-in-up [animation-delay:200ms]">
-            <span className="text-gold text-xl tracking-widest leading-none">★★★★</span>
+            <span className="text-gold text-2xl tracking-widest leading-none">★★★★</span>
             <div className="flex items-center gap-2 text-slate-600 opacity-50">
               <MoveRight className="w-4 h-4" />
               <span className="text-xl leading-none">★</span>
@@ -70,9 +103,9 @@ export default function HomePage() {
           </div>
 
           <p className="mt-8 text-sm sm:text-lg text-slate-400 max-w-xl mx-auto leading-relaxed fade-in-up [animation-delay:400ms]">
-            Lebih dari sekadar dukungan, ini adalah warisan dan harga diri. <br className="hidden sm:block" />
-            Abadikan setiap janji setia untuk kejayaan Sang Maung Bandung. <br />
-            <span className="text-persib-blue font-bold">PERSIB TILL I DIE!</span>
+            {/* Lebih dari sekadar dukungan, ini adalah warisan dan harga diri. <br className="hidden sm:block" /> */}
+            {/* Abadikan setiap janji setia untuk kejayaan Sang Maung Bandung. <br /> */}
+            <span className="text-persib-blue font-semibold italic">As one, as Bobotoh. Our friendship till we die</span>
           </p>
 
           <div className="mt-10 flex justify-center fade-in-up [animation-delay:600ms]">

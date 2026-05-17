@@ -172,7 +172,7 @@ export default function SuaraBobotoh() {
                       </div>
                     </div>
                     <span className="text-[9px] text-slate-600 uppercase font-medium">
-                      {new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      {new Date(msg.created_at).toLocaleDateString("id-ID", { timeZone: "Asia/Jakarta", day: 'numeric', month: 'short' })} • {new Date(msg.created_at).toLocaleTimeString("id-ID", { timeZone: "Asia/Jakarta", hour: '2-digit', minute: '2-digit', hour12: false })}
                     </span>
                   </div>
                   <div className="ml-11 bg-slate-800/50 border border-slate-700/50 p-4 rounded-2xl rounded-tl-none group-hover:border-persib-blue/30 transition-colors">
