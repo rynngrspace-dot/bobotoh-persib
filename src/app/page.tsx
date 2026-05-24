@@ -17,7 +17,7 @@ export default function HomePage() {
         const { data, error } = await supabase
           .from("chant_views")
           .select("slug, views");
-        
+
         if (error) throw error;
         if (data) {
           const map: Record<string, number> = {};
@@ -44,11 +44,11 @@ export default function HomePage() {
 
   const filteredChants = useMemo(() => {
     if (!searchQuery.trim()) return sortedChants;
-    
+
     const query = searchQuery.toLowerCase();
     return sortedChants.filter((chant) => {
       const titleMatch = chant.title.toLowerCase().includes(query);
-      const lyricsMatch = chant.lyrics.some((line) => 
+      const lyricsMatch = chant.lyrics.some((line) =>
         line.toLowerCase().includes(query)
       );
       return titleMatch || lyricsMatch;
@@ -63,7 +63,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-slate-950" />
         {/* Radial blue glow - restored for atmosphere */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(0,70,173,0.35),transparent)]" />
-        
+
         {/* Grid texture - restored for modern tech feel */}
         <div
           className="absolute inset-0 opacity-[0.08]"
@@ -93,23 +93,19 @@ export default function HomePage() {
             <span className="block text-persib-blue mt-2 flicker">SANG PENAKLUK!</span>
           </h1>
 
-          <div className="flex items-center justify-center gap-2 mb-8 fade-in-up [animation-delay:200ms]">
-            <span className="text-gold text-2xl tracking-widest leading-none">★★★★</span>
-            <div className="flex items-center gap-2 text-slate-600 opacity-50">
-              <MoveRight className="w-4 h-4" />
-              <span className="text-xl leading-none">★</span>
-              <span className="text-[10px] font-bold uppercase tracking-widest leading-none">soon!</span>
-            </div>
+          <div className="flex flex-col items-center justify-center gap-2 mb-8 fade-in-up [animation-delay:200ms]">
+            <span className="text-gold text-2xl tracking-widest leading-none">★★<span className="text-4xl text-persib-blue">★</span>★★</span>
+            <p className="text-3xl font-bold">We Are The Champions!</p>
           </div>
 
-          <p className="mt-8 text-sm sm:text-lg text-slate-400 max-w-xl mx-auto leading-relaxed fade-in-up [animation-delay:400ms]">
+          <p className="mt-8 text-xs sm:text-lg text-slate-400 max-w-xl mx-auto leading-relaxed fade-in-up [animation-delay:400ms]">
             {/* Lebih dari sekadar dukungan, ini adalah warisan dan harga diri. <br className="hidden sm:block" /> */}
             {/* Abadikan setiap janji setia untuk kejayaan Sang Maung Bandung. <br /> */}
             <span className="text-persib-blue font-semibold italic">As one, as Bobotoh. Our friendship till we die</span>
           </p>
 
           <div className="mt-10 flex justify-center fade-in-up [animation-delay:600ms]">
-            <Link 
+            <Link
               href="/suara-bobotoh"
               className="group relative flex items-center gap-3 px-8 py-4 bg-persib-blue hover:bg-blue-600 text-white rounded-2xl transition-all duration-300 shadow-2xl shadow-persib-blue/20 hover:scale-105 active:scale-95"
             >
